@@ -18,6 +18,9 @@ WORKDIR /workspace/mergekit
 # Install mergekit with evolve and vllm features in non-editable mode
 RUN pip install .[evolve,vllm]
 
+# Install packaging before flash-attn
+RUN pip install packaging
+
 # Fix flash attention if necessary
 RUN pip uninstall -y flash-attn && \
     pip cache purge && \
