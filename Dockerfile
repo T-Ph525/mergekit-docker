@@ -15,8 +15,8 @@ RUN apt-get update && apt-get install -y \
 RUN git clone https://github.com/arcee-ai/mergekit.git
 WORKDIR /workspace/mergekit
 
-# Install mergekit with evolve and vllm features
-RUN pip install -e .[evolve,vllm]
+# Install mergekit with evolve and vllm features in non-editable mode
+RUN pip install .[evolve,vllm]
 
 # Fix flash attention if necessary
 RUN pip uninstall -y flash-attn && \
