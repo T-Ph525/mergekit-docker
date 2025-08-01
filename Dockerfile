@@ -23,5 +23,17 @@ RUN pip uninstall -y flash-attn && \
     pip cache purge && \
     pip install flash-attn
 
+# Install additional Python packages for the GUI
+RUN pip install gradio huggingface-hub
+
 # Create a directory for storage
 RUN mkdir -p /workspace/mergekit-evolve-storage
+
+# Copy the Gradio application script into the container
+COPY app.py /workspace/app.py
+
+# Expose the port for the Gradio app
+EXPOSE 7860
+
+# Command to run the Gradio app
+CMD ["python", "/workspace/app.py"]
