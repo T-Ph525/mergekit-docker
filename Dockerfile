@@ -19,7 +19,7 @@ WORKDIR /workspace/mergekit
 RUN pip install .[evolve,vllm]
 
 # Install packaging before flash-attn
-RUN pip install packaging
+RUN pip install packaging torch
 
 # Fix flash attention if necessary
 RUN pip uninstall -y flash-attn && \
