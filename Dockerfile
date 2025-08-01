@@ -19,12 +19,7 @@ WORKDIR /workspace/mergekit
 RUN pip install .[evolve,vllm]
 
 # Install packaging before flash-attn
-RUN pip install packaging torch numpy
-
-# Fix flash attention if necessary
-RUN pip uninstall -y flash-attn && \
-    pip cache purge && \
-    pip install flash-attn
+RUN pip install packaging
 
 # Install additional Python packages for the GUI
 RUN pip install gradio huggingface-hub
